@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group 'cn.xihan.http'
+group 'cn.xihan.lib'
 version '11.0'
 
 sourceCompatibility = 1.8 // java 8

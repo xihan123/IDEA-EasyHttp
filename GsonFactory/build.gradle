@@ -2,8 +2,9 @@ plugins {
     id 'java'
 }
 
-group 'cn.xihan'
-version '1.0-SNAPSHOT'
+
+group 'cn.xihan.lib'
+version '1.0'
 
 repositories {
     mavenCentral()
@@ -23,4 +24,28 @@ tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
     options.addStringOption('encoding', 'UTF-8')
     options.addStringOption('charSet', 'UTF-8')
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    sourceCompatibility = 1.8 // java 8
+    targetCompatibility = 1.8
+
+    java {
+        withSourcesJar()
+        withJavadocJar()
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId project.group
+                artifactId project.name
+                version project.version
+                from components.java
+            }
+        }
+    }
 }
