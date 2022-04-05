@@ -19,7 +19,7 @@
 
 dependencies {
     // 网络请求框架：https://github.com/xihan123/EasyHttp
-    implementation 'com.github.xihan123:IDEA-EasyHttp:11.0'
+    implementation 'com.github.xihan123.IDEA-EasyHttp:EasyHttp-11:11.0'
     // OkHttp 框架：https://github.com/square/okhttp
     implementation 'com.squareup.okhttp3:okhttp:<okhttp-version 4.x-5.x>'
 }
@@ -34,9 +34,9 @@ dependencies {
 		</repository>
 	</repositories>
 
-<dependency>
-	    <groupId>com.github.xihan123</groupId>
-	    <artifactId>IDEA-EasyHttp</artifactId>
+	<dependency>
+	    <groupId>com.github.xihan123.IDEA-EasyHttp</groupId>
+	    <artifactId>EasyHttp-11</artifactId>
 	    <version>11.0</version>
 	</dependency>
 
