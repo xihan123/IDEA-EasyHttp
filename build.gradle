@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'cn.xihan.http'
+version '11.0'
+
+sourceCompatibility = 1.8 // java 8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:latest.release'
+    implementation 'com.google.code.gson:gson:latest.release'
+    implementation 'org.json:json:latest.release'
+
+    implementation project('FastKv')
+    implementation project('GsonFactory')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+wrapper {
+    gradleVersion = "7.4"
+    distributionType = Wrapper.DistributionType.BIN
+}
+
+
