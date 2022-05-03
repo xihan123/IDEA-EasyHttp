@@ -1,9 +1,0 @@
-# 项目排除路径
-/.gradle/
-/build/
-/build/classes/java/main/
-/FastKv/build/
-/FastKv/build/classes/java/main/
-/GsonFactory/build/
-/GsonFactory/build/classes/java/main/
-/out/

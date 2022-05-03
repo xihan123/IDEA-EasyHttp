@@ -1,0 +1,24 @@
+package cn.xihan.lib.easyhttp.listener
+
+/**
+ * author : Android 轮子哥
+ * github : [https://github.com/getActivity/EasyHttp](https://github.com/getActivity/EasyHttp)
+ * time   : 2020/08/15
+ * desc   : 带上传进度回调的监听器
+ */
+interface OnUpdateListener<T> : OnHttpListener<T> {
+    /**
+     * 上传字节改变
+     *
+     * @param totalByte             总字节数
+     * @param updateByte            已上传字节数
+     */
+    fun onByte(totalByte: Long, updateByte: Long) {}
+
+    /**
+     * 上传进度改变
+     *
+     * @param progress          上传进度值（0-100）
+     */
+    fun onProgress(progress: Int)
+}

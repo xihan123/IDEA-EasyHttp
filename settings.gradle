@@ -1,4 +1,4 @@
-rootProject.name = 'EasyHttp-11'
 
+rootProject.name = 'EasyHttp-11-KT'
 include 'GsonFactory'
-include 'FastKv'
+

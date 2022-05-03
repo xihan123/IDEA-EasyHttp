@@ -1,13 +1,10 @@
 plugins {
-    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.21'
     id 'maven-publish'
 }
 
-group 'cn.xihan.lib'
-version '11.0'
-
-sourceCompatibility = 1.8 // java 8
-targetCompatibility = 1.8
+group = 'cn.xihan.lib'
+version = '11.0'
 
 repositories {
     mavenCentral()
@@ -18,55 +15,37 @@ dependencies {
     implementation 'com.google.code.gson:gson:latest.release'
     implementation 'org.json:json:latest.release'
 
-    implementation project('FastKv')
-    implementation project('GsonFactory')
+    implementation project(":GsonFactory")
+    //testImplementation 'org.jetbrains.kotlin:kotlin-test'
 }
 
 test {
     useJUnitPlatform()
 }
 
-java {
-    withSourcesJar()
-    withJavadocJar()
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = '1.8'
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
             from components.java
         }
     }
 }
 
-
-subprojects {
-    apply plugin: 'java'
-    apply plugin: 'maven-publish'
-
-    sourceCompatibility = 1.8 // java 8
-    targetCompatibility = 1.8
-
-    java {
-        withSourcesJar()
-        withJavadocJar()
-    }
-
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                groupId project.group
-                artifactId project.name
-                version project.version
-                from components.java
-            }
-        }
-    }
-}
-
 wrapper {
-    gradleVersion = "7.4"
+    gradleVersion = "7.3.3"
     distributionType = Wrapper.DistributionType.BIN
 }
+
 
 
