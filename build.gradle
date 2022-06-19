@@ -1,17 +1,19 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.6.21'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.0'
     id 'maven-publish'
 }
 
 group = 'cn.xihan.lib'
-version = '11.0'
+version = '11.0.0619'
 
 repositories {
     mavenCentral()
+    maven { url "https://s01.oss.sonatype.org/content/repositories/releases" }
+    maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 }
 
 dependencies {
-    implementation 'com.squareup.okhttp3:okhttp:latest.release'
+    api 'com.squareup.okhttp3:okhttp:5.0.0-SNAPSHOT'
     implementation 'com.google.code.gson:gson:latest.release'
     implementation 'org.json:json:latest.release'
 
@@ -43,7 +45,7 @@ publishing {
 }
 
 wrapper {
-    gradleVersion = "7.3.3"
+    gradleVersion = "7.4.2"
     distributionType = Wrapper.DistributionType.BIN
 }
 
