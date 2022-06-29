@@ -23,6 +23,13 @@ test {
     useJUnitPlatform()
 }
 
+// 防止编码问题
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
 publishing {
     publications {
         maven(MavenPublication) {
@@ -33,6 +40,8 @@ publishing {
         }
     }
 }
+
+
 
 wrapper {
     gradleVersion = "7.4"
