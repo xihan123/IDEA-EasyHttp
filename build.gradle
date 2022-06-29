@@ -23,33 +23,13 @@ test {
     useJUnitPlatform()
 }
 
-subprojects {
-    apply plugin: 'java'
-    apply plugin: 'maven-publish'
-
-    sourceCompatibility = 1.8 // java 8
-    targetCompatibility = 1.8
-
-    java {
-        withSourcesJar()
-        withJavadocJar()
-    }
-
-    // 防止编码问题
-    tasks.withType(Javadoc) {
-        options.addStringOption('Xdoclint:none', '-quiet')
-        options.addStringOption('encoding', 'UTF-8')
-        options.addStringOption('charSet', 'UTF-8')
-    }
-
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                groupId project.group
-                artifactId project.name
-                version project.version
-                from components.java
-            }
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
+            from components.java
         }
     }
 }
