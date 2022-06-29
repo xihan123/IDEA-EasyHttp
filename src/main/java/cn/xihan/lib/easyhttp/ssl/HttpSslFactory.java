@@ -103,7 +103,7 @@ public final class HttpSslFactory {
     }
 
     private static TrustManager[] prepareTrustManager(InputStream... certificates) {
-        if (certificates == null || certificates.length <= 0) {
+        if (certificates == null || certificates.length == 0) {
             return null;
         }
         try {

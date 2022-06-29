@@ -1,6 +1,5 @@
 package cn.xihan.lib.easyhttp.config;
 
-import androidx.annotation.NonNull;
 import cn.xihan.lib.easyhttp.model.BodyType;
 
 /**
@@ -14,6 +13,5 @@ public interface IRequestType {
     /**
      * 获取参数的提交类型
      */
-    @NonNull
     BodyType getBodyType();
 }

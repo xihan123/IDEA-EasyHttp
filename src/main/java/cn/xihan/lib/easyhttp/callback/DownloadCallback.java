@@ -7,7 +7,7 @@ import cn.xihan.lib.easyhttp.config.IRequestInterceptor;
 import cn.xihan.lib.easyhttp.exception.FileMD5Exception;
 import cn.xihan.lib.easyhttp.exception.NullBodyException;
 import cn.xihan.lib.easyhttp.exception.ResponseException;
-import cn.xihan.lib.easyhttp.lifecycle.HttpLifecycleManager;
+
 import cn.xihan.lib.easyhttp.listener.OnDownloadListener;
 import cn.xihan.lib.easyhttp.request.HttpRequest;
 import okhttp3.Call;
@@ -161,14 +161,14 @@ public final class DownloadCallback extends BaseCallback {
     }
 
     private void callOnStart() {
-        if (mListener == null || !HttpLifecycleManager.isLifecycleActive(mHttpRequest.getLifecycleOwner())) {
+        if (mListener == null) {
             return;
         }
         mListener.onStart(mFile);
     }
 
     private void callOnProgress() {
-        if (mListener == null || !HttpLifecycleManager.isLifecycleActive(mHttpRequest.getLifecycleOwner())) {
+        if (mListener == null) {
             return;
         }
         mListener.onByte(mFile, mTotalByte, mDownloadByte);
@@ -184,7 +184,7 @@ public final class DownloadCallback extends BaseCallback {
     }
 
     private void callOnComplete(boolean cache) {
-        if (mListener == null || !HttpLifecycleManager.isLifecycleActive(mHttpRequest.getLifecycleOwner())) {
+        if (mListener == null) {
             return;
         }
         mListener.onComplete(mFile, cache);
@@ -192,7 +192,7 @@ public final class DownloadCallback extends BaseCallback {
     }
 
     private void callOnError(Exception e) {
-        if (mListener == null || !HttpLifecycleManager.isLifecycleActive(mHttpRequest.getLifecycleOwner())) {
+        if (mListener == null) {
             return;
         }
         mListener.onError(mFile, e);
