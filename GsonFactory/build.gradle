@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'cn.xihan.lib'
+version '6.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'org.json:json:20220320'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// 防止编码问题
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+

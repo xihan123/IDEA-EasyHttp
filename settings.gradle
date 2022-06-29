@@ -1,0 +1,3 @@
+rootProject.name = 'EasyHttp'
+include 'GsonFactory'
+

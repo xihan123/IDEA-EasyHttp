@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+}
+
+group 'cn.xihan.lib'
+version '11.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'org.json:json:20220320'
+    implementation project (":GsonFactory")
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    sourceCompatibility = 1.8 // java 8
+    targetCompatibility = 1.8
+
+    java {
+        withSourcesJar()
+        withJavadocJar()
+    }
+
+    // 防止编码问题
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId project.group
+                artifactId project.name
+                version project.version
+                from components.java
+            }
+        }
+    }
+}
+
+wrapper {
+    gradleVersion = "7.4"
+    distributionType = Wrapper.DistributionType.BIN
+}
+
+
